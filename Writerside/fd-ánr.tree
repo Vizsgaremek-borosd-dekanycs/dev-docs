@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="fd-ánr"
+                 name="Fejlesztői Dokumentáció - Állatorvosi nyilvántartó rendszer"
+                 start-page="starter.md">
+
+    <toc-element topic="starter.md"/>
+    <toc-element topic="Dokumentum-célközönsége.md"/>
+    <toc-element topic="Szoftverkövetelmények.md"/>
+    <toc-element topic="Alkalmazott-architektúra.md"/>
+    <toc-element topic="API-Kommunikációra-vonatkozó-megkötések.md"/>
+</instance-profile>

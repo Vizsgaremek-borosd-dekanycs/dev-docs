@@ -18,8 +18,8 @@ Az alábbiakban összefoglaljuk az API-k használatával kapcsolatos legfontosab
 Minden a kommunikációhoz szükséges modelt a SharedModels-en keresztül kell regisztrálni, hogy a kliens és a szerver modul által is könnyen hozzáférhető legyen.
 Ezekre a továbbiakban ApiCommand-ként fogunk hivatkozni.
 
-Az ApiCommand recordot tartalmazó fájlt a `SharedModels/Features/[hozzá tartozó feature]` mappában kell létrehozni.
-A fájlnak tartalmaznia kell a record definíciót és a hozzá tartozó validátort.
+Az ApiCommand recordot tartalmazó fájlt a `SharedModels/Features/[Feature Group]/[hozzá tartozó feature]` mappában kell létrehozni.
+A fájlnak tartalmaznia kell a record definíciót és a hozzá tartozó validátort, illetve a választ.
 
 > A validátor gondoskodik a kérés validálásáról, mind kliens mind szerveroldalon a MediatR pipeline és a fluent validation segítségével.
 
@@ -29,27 +29,44 @@ A fájlnak tartalmaznia kell a record definíciót és a hozzá tartozó validá
 {style="tip"}
 
 ### Példa: LoginUserCommand
-#### Fájl: `SharedModels/Features/Authentication`
+#### Fájl: `SharedModels/Features/IAM/LoginUserApiCommand.cs`
 
 ```c#
-using FluentValidation;
-using vetcms.SharedModels.Common;
-
-namespace vetcms.SharedModels.Features.Authentication
+public record LoginUserApiCommand() : UnauthenticatedApiCommandBase<LoginUserApiCommandResponse>
 {
-    public record LoginUserCommand : UnauthenticatedApiCommandBase<int>
+    public string Email { get; init; }
+    public string Password { get; init; }
+
+    
+    public override string GetApiEndpoint()
     {
-        public string Email { get; init; }
-        public string Password { get; init; }
+        return Path.Join(ApiBaseUrl, "/api/v1/iam/login");
     }
 
-    public class LoginUserCommandValidator : AbstractValidator<LoginUserCommand>
+    public override HttpMethodEnum GetApiMethod()
     {
-        public LoginUserCommandValidator()
-        {
-            RuleFor(x => x.Email).NotEmpty().EmailAddress();
-            RuleFor(x => x.Password).NotEmpty();
-        }
+        return HttpMethodEnum.Post;
+    }
+}
+
+public class LoginUserCommandValidator : AbstractValidator<LoginUserApiCommand>
+{
+    public LoginUserCommandValidator()
+    {
+        RuleFor(x => x.Email).NotEmpty().EmailAddress();
+        RuleFor(x => x.Password).NotEmpty();
+    }
+}
+
+public record LoginUserApiCommandResponse : ICommandResult
+{
+    public bool Success { get; set; }
+    public string Message { get; set; }
+    public string PermissionSet { get; set; }
+    public string AccessToken { get; set; }
+    public EntityPermissions GetPermissions()
+    {
+        return new EntityPermissions(PermissionSet);
     }
 }
 ```

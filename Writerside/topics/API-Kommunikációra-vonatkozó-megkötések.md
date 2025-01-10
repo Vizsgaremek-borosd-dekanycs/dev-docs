@@ -64,7 +64,7 @@ namespace vetcms.SharedModels.Features.Authentication
 ## Kérések feldolgozása a szerver oldalon
 
 ## **Autentikáció és autorizáció**
-- Minden API-híváshoz **JWT-tokent** vagy más hitelesítési mechanizmust kell mellékelni.
+- Minden hitelesítést igénylő API-híváshoz **JWT-tokent** kell mellékelni.
 - A jogosultsági szinteknek megfelelően kell korlátozni a hozzáférést (pl. Admin, Felhasználó, Vendég).
 
 

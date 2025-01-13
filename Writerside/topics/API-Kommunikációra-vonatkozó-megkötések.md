@@ -81,7 +81,7 @@ public record LoginUserApiCommandResponse : ICommandResult
 ## Kérések feldolgozása a szerver oldalon
 
 ## **Autentikáció és autorizáció**
-- Minden API-híváshoz **JWT-tokent** vagy más hitelesítési mechanizmust kell mellékelni.
+- Minden hitelesíteni kívánt API-híváshoz **JWT-tokent** vagy más hitelesítési mechanizmust kell mellékelni.
 - A jogosultsági szinteknek megfelelően kell korlátozni a hozzáférést (pl. Admin, Felhasználó, Vendég).
 
 
@@ -176,44 +176,25 @@ Az API megbízhatóságának, stabilitásának és helyes működésének biztos
 
 ### **Unit tesztek**
 - **Cél**: Az API-t támogató üzleti logika és funkciók helyességének ellenőrzése izolált környezetben.
-- **Minimum lefedettség**: Az API belső kódjának legalább **90%-os lefedettsége** unit tesztekkel.
+- **Minimum lefedettség**: Az API featureök legalább **90%-os lefedettsége** unit tesztekkel.
 - **Tesztelendő komponensek**:
-    - Adatbázis-interakciók (CRUD műveletek).
     - Validációs logikák.
     - Egyedi üzleti szabályok.
 
 ### **Integrációs tesztek**
+- **Cél**: A komponens funkcionalitásának és az általa használt további komponensekkel való együttműködésének a tesztelése
+- **Tesztelendő elemek**:
+    - Adatbázis-interakciók (CRUD műveletek).
+
+### **End To End (E2E) tesztek**
 - **Cél**: Az API különböző komponenseinek (adatbázis, külső szolgáltatások, stb.) együttműködésének ellenőrzése.
 - **Tesztelendő elemek**:
     - Végpontok teljes adatfolyamatainak ellenőrzése.
     - Külső API-k hívásainak szimulálása és visszatérési értékeik kezelése.
 - **Példa**: Egy új rendelés létrehozásának tesztje, beleértve az adatbázisba történő mentést és a külső fizetési szolgáltatóval való interakciót.
 
-### **Funkcionális tesztek**
-- **Cél**: Az API végpontjainak ellenőrzése a specifikációk szerint.
-- **Tesztelendő aspektusok**:
-    - HTTP státuszkódok helyessége (pl. 200, 404, 500).
-    - Helyes válaszstruktúra és adatvisszaadás.
-    - Hibakezelés ellenőrzése (pl. rossz paraméterek, autentikáció hiánya).
-
-### **Teljesítménytesztek**
-- **Cél**: Az API teljesítményének mérése különböző terhelési szinteken.
-- **Tesztelendő jellemzők**:
-    - Válaszidők tipikus és nagy terhelés mellett.
-    - Stabilitás túlterhelési helyzetekben.
-    - Sebességkorlátok és throttling mechanizmusok működése.
-- **Eszközök**: JMeter, k6 vagy hasonló terhelésvizsgáló eszközök.
-
-### **Biztonsági tesztek**
-- **Cél**: Az API biztonságának biztosítása külső fenyegetésekkel szemben.
-- **Tesztelendő szcenáriók**:
-    - SQL Injection támadások elleni védelem.
-    - Autentikációs és autorizációs hibák kezelése.
-    - HTTPS implementáció helyessége.
-    - Sebezhetőségek ellenőrzése (pl. OWASP Top 10).
-
 ### **Automatizált tesztelés**
-- Az összes unit, integrációs és funkcionális tesztet automatizálni kell, és integrálni kell a CI/CD folyamatba.
+- Az összes unit, integrációs és E2E tesztet automatizálni kell, és integrálni kell a CI/CD folyamatba.
 - Az API minden módosításakor a teljes tesztcsomagnak automatikusan le kell futnia.
 
 ### **Tesztlefedettségi riport**

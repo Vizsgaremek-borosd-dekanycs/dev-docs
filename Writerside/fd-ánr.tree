@@ -11,4 +11,5 @@
     <toc-element topic="Szoftverkövetelmények.md"/>
     <toc-element topic="Alkalmazott-architektúra.md"/>
     <toc-element topic="API-Kommunikációra-vonatkozó-megkötések.md"/>
+    <toc-element topic="Autentikacio-es-Autorizacio.md"/>
 </instance-profile>

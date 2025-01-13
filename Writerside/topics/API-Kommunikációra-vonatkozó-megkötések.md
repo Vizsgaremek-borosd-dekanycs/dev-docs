@@ -76,6 +76,12 @@ public record LoginUserApiCommandResponse : ICommandResult
 
 
 ## Kérések feldolgozása a kliens oldalon
+
+## Web Interface
+
+
+## Client Behavious
+
 [TODO]
 
 ## Kérések feldolgozása a szerver oldalon

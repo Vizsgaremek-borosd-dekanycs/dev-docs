@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="88196e2f-8a27-4723-bf9e-da2abad0bd48" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/topics/API-Kommunikációra-vonatkozó-megkötések.md" beforeDir="false" afterPath="$PROJECT_DIR$/topics/API-Kommunikációra-vonatkozó-megkötések.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/topics/Alkalmazott-architektúra.md" beforeDir="false" afterPath="$PROJECT_DIR$/topics/Alkalmazott-architektúra.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="InstanceColorv3">
+    <option name="map">
+      <map>
+        <entry key="$PROJECT_DIR$/fd-ánr.tree">
+          <value>
+            <ColorState>
+              <option name="customOrder" value="1" />
+              <option name="first">
+                <RgbState>
+                  <option name="blue" value="60" />
+                  <option name="darkBlue" value="60" />
+                  <option name="darkGreen" value="68" />
+                  <option name="darkRed" value="206" />
+                  <option name="green" value="68" />
+                  <option name="red" value="206" />
+                </RgbState>
+              </option>
+              <option name="second">
+                <RgbState>
+                  <option name="blue" value="65" />
+                  <option name="darkBlue" value="65" />
+                  <option name="darkGreen" value="126" />
+                  <option name="darkRed" value="231" />
+                  <option name="green" value="126" />
+                  <option name="red" value="231" />
+                </RgbState>
+              </option>
+            </ColorState>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2pzLWg5e6jgcx6YGWD50jmaxaci" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/boros/Documents/GitHub/dev-docs"
+  },
+  "keyToStringList": {
+    "stardust.markdown.MarkdownSplitEditorSuppressor:keyList": [
+      "C:/Users/boros/Documents/GitHub/dev-docs/Writerside/topics/API-Kommunikációra-vonatkozó-megkötések.md",
+      "C:/Users/boros/Documents/GitHub/dev-docs/Writerside/topics/Alkalmazott-architektúra.md",
+      "C:/Users/boros/Documents/GitHub/dev-docs/Writerside/topics/Dokumentum-célközönsége.md",
+      "C:/Users/boros/Documents/GitHub/dev-docs/Writerside/topics/Szoftverkövetelmények.md",
+      "C:/Users/boros/Documents/GitHub/dev-docs/Writerside/topics/starter.md"
+    ]
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+</project>

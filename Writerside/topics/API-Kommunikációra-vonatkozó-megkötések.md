@@ -74,16 +74,6 @@ public record LoginUserApiCommandResponse : ICommandResult
 
 {style="warning"}
 
-
-## Kérések feldolgozása a kliens oldalon
-
-## Web Interface
-
-
-## Client Behavious
-
-[TODO]
-
 ## Kérések feldolgozása a szerver oldalon
 
 ## **Autentikáció és autorizáció**

@@ -5,6 +5,9 @@
 A LoginUser Feature lehetővé teszi a felhasználók számára, hogy e-mail címük és jelszavuk megadásával hitelesítsék magukat. Ez a funkció szerver- és kliensoldali komponensek kombinációjával valósul meg a bejelentkezési folyamat kezelésére, a felhasználói hitelesítő adatok érvényesítésére és a hozzáférési tokenek generálására.
 [kép: https://docs.google.com/drawings/d/1rMhfcdf2PDWzXor0b5WHI8KAb5k4aMFn9lqtHwS2poE/edit]
 
+# Elvárt jogosultság(ok):
+- CAN_LOGIN
+
 ### Komponensek
 1. **LoginUserCommandHandler.cs**
  - **Hely:** [Forráskód](https://github.com/Vizsgaremek-borosd-dekanycs/Vizsgaremek/blob/ecb02afcc95ace3721e666354ec24d44712eb524/vetcms/src/vetcms.Application/Features/IAM/LoginUser/LoginUserCommandHandler.cs

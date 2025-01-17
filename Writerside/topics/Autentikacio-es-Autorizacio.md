@@ -65,9 +65,10 @@ public class AssignUserPermissionApiCommandValidator : AbstractValidator<AssignU
 
 ---
 
-## JWT Validation
+## JWT Generálás & Validálás
 
 A JSON Web Token (JWT) validálása elengedhetetlen a hitelesítési folyamatban. A JWT biztosítja, hogy a felhasználók és a rendszerek között zajló kommunikáció megfelelően hitelesített és biztonságos legyen.
+A JWT-vel kapcsolatos műveleteket, létrehozás, ellenörzés, stb. az ```AuthenticationCommon``` végzi.
 
 [kép: https://docs.google.com/drawings/d/13XkQAiiwz9wBqBG0p9inySpUsFH0HwIbohKoreI985A/edit]
 
@@ -193,3 +194,8 @@ namespace vetcms.ServerApplication.Domain.Entity
 ```
 
 # Bejelentkezés
+
+[kép: https://docs.google.com/drawings/d/1rMhfcdf2PDWzXor0b5WHI8KAb5k4aMFn9lqtHwS2poE/edit]
+
+# Regisztráció
+[kép: https://docs.google.com/drawings/d/1zvvfwWZjXXpqZyFjl9LY70t185tvnB1ag7oX2ROKYNw/edit]

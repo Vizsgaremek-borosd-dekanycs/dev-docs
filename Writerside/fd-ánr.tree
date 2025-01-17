@@ -11,9 +11,8 @@
     <toc-element topic="Szoftverkövetelmények.md"/>
     <toc-element topic="Alkalmazott-architektúra.md"/>
     <toc-element topic="API-Kommunikációra-vonatkozó-megkötések.md"/>
-<<<<<<< Updated upstream
-    <toc-element topic="Autentikacio-es-Autorizacio.md"/>
-=======
     <toc-element topic="Kérések-feldolgozása-a-kliensoldalon.md"/>
->>>>>>> Stashed changes
+    <toc-element topic="Autentikacio-es-Autorizacio.md"/>
+    <toc-element topic="Feature-IAM.md"/>
+
 </instance-profile>

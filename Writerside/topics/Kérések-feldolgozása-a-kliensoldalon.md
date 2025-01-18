@@ -45,7 +45,7 @@ A „Client Command” osztályok feladata a webes felületről érkező adatok 
 A „Client Behaviour” osztályok az elsődleges adatellenőrzésekért felelősek. A kérések érkezésekor lehetőséget biztosítanak a kérés elfogására, módosítására, vagy cseréjére.
 
 - **UnhandledExceptionBehaviour**: Az ismeretlen hibák kezelésére használt, az `IClientCommand<T>` osztályokat figyeli.
-- **ValidationBehaviour**: Az `ApiCommandBase<T>` osztályokat validálja, és a hibás kéréseket visszautasítja hibaüzenettel.
+- **ValidationBehaviour**: Az `ApiCommandBase<T>` osztályokat validálja, és a hibás formátumu bemeneteket visszautasítja hibaüzenettel.
 
 Ezek az osztályok biztosítják, hogy a pipeline áramlása megfelelően történjen. Ha valamelyik szakasz nem tudja kezelni a kérést, értesítést küld a felhasználónak, sikeres ellenőrzés esetén pedig folytatódik a feldolgozás.
 

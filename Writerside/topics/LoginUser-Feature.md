@@ -95,7 +95,7 @@ A **LoginUserCommandHandler** osztály a szerveroldalon valósítja meg a bejele
 1. **Adatbázis**:
     - A felhasználói adatokat az `IUserRepository` interfész kezeli.
 2. **Jogosultságkezelés**:
-    - Az engedélyek a `PermissionFlags` segítségével ellenőrizhetők.
+    - Az engedélyek a `PermissionFlags` alapján az `EntityPermissions` segítségével ellenőrizhetők.
 3. **Token Generálás**:
     - A hozzáférési tokent az `IAuthenticationCommon` interfész generálja.
 4. **Hiba- és Kivételkezelés**:

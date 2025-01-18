@@ -4,6 +4,8 @@
 
 Ez a dokumentum áttekintést nyújt a kliensoldali kérések feldolgozásáról, részletezve a rendszer különböző rétegeinek működését és szerepét. Célja, hogy bemutassa a kliensoldali komponensek és a háttérrendszer közötti kommunikáció folyamatát az adatfeldolgozás hatékonysága és megbízhatósága érdekében.
 
+![](../../assets/Client side api command handling.png)
+
 ## Webes felület
 
 A felhasználói interakciók elsődleges pontja a webes felület, amely biztosítja a rendszer funkcionalitásához való hozzáférést. Ez a réteg korlátozott betekintést nyújt a teljes architektúra működésébe, de kulcsszerepet tölt be a felhasználói műveletek továbbításában a „Client Command” komponensek felé.

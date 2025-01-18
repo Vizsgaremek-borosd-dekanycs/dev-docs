@@ -27,6 +27,12 @@ private async void Login()
 ### Hibakezelés
 
 - Az alkalmazás hibakezelési folyamata biztosítja, hogy mind a kliens-, mind a szerveroldali problémákról értesítést kapjon a felhasználó a **DialogService** segítségével.
+- A hiba szintjétől függ a hibakezelés helye.
+  - `ClientCommandHandler`: olyan problémákból, ami a felhasználónak későbbi
+  - `ApiCommand`: validálásnál az `ApiCommandValidator` (fleunt validation) segítségével
+  - `CommandHandler`: adatbázis adataival kapcsolatos problémák pl: nem lehet egy íméllel két fiókot létrehozni
+  - `GenericApiCommandHandler`: API kommunikációs hibáknál
+  - `UnhandledExceptionBehaviour`:  ismeretlen hiba esetén, ha más hibakezelő nem tudta kezelni
 - A "Client Command" osztályok paraméterként kapják meg a szükséges hibakezelési információkat, ezáltal lehetővé téve a pontos és célzott visszajelzéseket.
 
 ## Client Command

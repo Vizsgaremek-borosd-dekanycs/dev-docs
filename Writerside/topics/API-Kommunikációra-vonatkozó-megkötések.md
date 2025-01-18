@@ -100,12 +100,6 @@ public record LoginUserApiCommandResponse : ICommandResult
 }
 ```
 
-## **Sebességkorlátok (Rate limiting)**
-- Egy adott IP-címről érkező hívások száma percenként legfeljebb **100**.
-- A sebességkorlát átlépése esetén a válasz:
-    - HTTP státuszkód: **429 Too Many Requests**.
-    - Üzenet: "Túl sok kérés. Próbálja újra később."
-
 ## **Idempotencia**
 - Az alábbi HTTP metódusok idempotens működést kell biztosítsanak:
     - **GET**, **PUT**, **DELETE**: Többszöri meghívásuknak nem szabad különböző eredményt okozni.

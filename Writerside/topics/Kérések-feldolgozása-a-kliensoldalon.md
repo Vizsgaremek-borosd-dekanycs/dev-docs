@@ -31,7 +31,7 @@ A hibakezelési mechanizmus biztosítja, hogy a kliens- és szerveroldali probl�
 - **ClientCommandHandler**: A konkrét üzleti logika eredményét dolgozza fel, és jeleniti meg annak az esetleges hibáját.
 - **ApiCommand**: Az `ApiCommandValidator` validálásán átmenő hibákat kezeli.
 - **CommandHandler**: Adatbázis-specifikus problémák kezelésére, például duplikált e-mailcímek.
-- **GenericApiCommandHandler**: API-kommunikáció során fellépő hibák kezelése.
+- **GenericApiCommandHandler**: Általános user-error kezelés. Az üzleti logikán kívül eső logikában fellépő problémákat jeleníti meg a user számára.
 - **UnhandledExceptionBehaviour**: "fallback line", globális kivételkezelési réteget biztosít, amely minimalizálja a rendszer váratlan összeomlását, és lehetőséget ad a biztonságos hibakezelésre. Továbbá fontos információhoz juttatja a fejlesztőt a probléma esetleges megoldásához.
 
 A „Client Command” osztályok paraméterként kapják meg a hibakezelési információkat, így biztosítva a pontos visszajelzéseket.

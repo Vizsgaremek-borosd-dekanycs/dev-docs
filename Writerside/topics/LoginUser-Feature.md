@@ -4,7 +4,8 @@
 
 A **LoginUser** funkció lehetővé teszi a felhasználók számára, hogy e-mail címük és jelszavuk megadásával hitelesítsék magukat. Ez a funkció kliens- és szerveroldali komponensek integrációjával biztosítja a bejelentkezési folyamat kezelését, a hitelesítő adatok érvényesítését, valamint a hozzáférési tokenek generálását.
 
-![LoginUser Funkció Áttekintés]\(LoginUser Feature.png)
+
+![LoginUser Funkció Áttekintés](LoginUser Feature.png)
 
 ## Jogosultsági Követelmények
 

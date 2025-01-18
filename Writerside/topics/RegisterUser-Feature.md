@@ -4,11 +4,13 @@
 
 A `RegisterUser` funkció a felhasználói regisztráció kezelését végzi a rendszerben. A funkció több komponensből épül fel, amelyek célja a felhasználói adatok validálása, új felhasználók létrehozása és az információk biztonságos tárolása az adatbázisban. Az alábbiakban részletesen ismertetjük a funkció kulcsfontosságú elemeit és működését.
 
+![](RegisterUser_Feature.png)
+
 ---
 
 ## Kulcsfontosságú Komponensek
 
-### Kliens Oldali Elemei
+### Kliens Oldali Komponensek
 
 #### `vetcms/vetcms.ClientApplication/Features/IAM/RegisterUser/RegisterUserClientCommand.cs`
 Ez a fájl tartalmazza a `RegisterUserClientCommand` osztályt, amely a kliens oldali regisztrációs parancsot definiálja.
@@ -21,7 +23,7 @@ Ez a fájl tartalmazza a regisztrációs oldalt megvalósító Blazor komponenst
 
 ---
 
-### Megosztott Komponensek
+### Kétoldali Komponensek
 
 #### `vetcms/SharedModels/Features/IAM/RegisterUserApiCommand.cs`
 - **Osztályok**:
@@ -44,14 +46,6 @@ A `User` entitás ebben a fájlban van definiálva. Tulajdonságai: `Email`, `Ph
 
 #### `vetcms/src/vetcms.Application/Features/IAM/PasswordUtility.cs`
 A `PasswordUtility` osztály módszereket kínál a jelszavak hash-elésére és ellenőrzésére.
-
-#### Tesztfájlok
-- **Integrációs tesztek**:
-    - `vetcms/tests/vetcms.ServerApplicationTests/IntegrationTests/Features/IAM/RegisterUserCommandHandlerIntegrationTests.cs`
-    - Biztosítja, hogy a regisztrációs folyamat helyesen működik.
-- **Egységtesztek**:
-    - `vetcms/tests/vetcms.ServerApplicationTests/UnitTests/Features/IAM/RegisterUserCommandHandlerUnitTests.cs`
-    - Ellenőrzi a kezelő viselkedését különböző forgatókönyvekben.
 
 ---
 
@@ -81,7 +75,7 @@ A válasz JSON objektuma az alábbi tulajdonságokat tartalmazza:
 
 ---
 
-## Érvényesítési Szabályok
+## Bemeneti szabályok
 
 A `RegisterUserApiCommandValidator` osztály a következő érvényesítési szabályokat alkalmazza:
 
@@ -117,7 +111,7 @@ A `RegisterUser` funkció tesztelési stratégiája az alábbi forgatókönyvekr
 
 ## Architektúra
 
-A `RegisterUser` funkció rétegezett architektúrát követ, amelyben minden réteg meghatározott komponenseket használ:
+A `RegisterUser` funkció implementációja több rétegen át terjed, amelyben minden réteg meghatározott komponenseket használ:
 
 ### Prezentációs réteg
 - **Komponens**: `RegisterPage.razor` (regisztrációs felhasználói felület).

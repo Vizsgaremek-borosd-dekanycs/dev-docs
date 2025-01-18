@@ -37,7 +37,7 @@ private async void Login()
 
 ## Client Command
 
-- A Client Command osztályok feladata a beérkező adatok előkészítése és a "Communication Bus"-on való továbbítása.
+- A Client Command osztályok feladata a webes felületről beérkező adatok előkészítése és a "Client Command Bus"-on való továbbítása.
 - Minden Client Command implementálja az `IClientCommand<bool>` interfészt, amely biztosítja a pipeline folyamatosságát és megfelelő működését.
 
 ## Client Behaviour

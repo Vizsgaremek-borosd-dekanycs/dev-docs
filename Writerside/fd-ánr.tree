@@ -6,6 +6,7 @@
                  name="Fejlesztői Dokumentáció - Állatorvosi nyilvántartó rendszer"
                  start-page="starter.md">
 
+    <toc-element topic="Szerveroldali-kérések-feldolgozása.md"/>
     <toc-element topic="starter.md"/>
     <toc-element topic="Dokumentum-célközönsége.md"/>
     <toc-element topic="Szoftverkövetelmények.md"/>

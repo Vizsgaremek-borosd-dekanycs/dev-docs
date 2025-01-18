@@ -77,5 +77,5 @@ Az API Command Handler-ek a `GenericApiCommandHandler` osztályból örököltet
 
 ## Generic API Command Handler
 
-A Generic API Command Handler az összes „ApiCommand” osztályban definiált műveletet végrehajtja. Ez az osztály felelős a műveletek eredményeinek feldolgozásáért és a felhasználói tájékoztatás biztosításáért.
+A Generic API Command Handler az összes „ApiCommand”-ban definiált információ segítségével végrehajtja a megfelő HTTP Parancsot.
 

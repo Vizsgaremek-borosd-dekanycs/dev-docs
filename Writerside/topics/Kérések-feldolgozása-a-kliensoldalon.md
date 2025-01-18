@@ -1,34 +1,75 @@
-# Kérések feldolgozása a kliens oldalon
+# Kérések feldolgozása a kliensoldalon
 
-Ebben a részben a kliens oldal az API-val való kommunikációjára fogunk kitérni
+## Bevezetés
 
-![](../../assets/Client side api command handling.svg)
+Ez a dokumentum részletesen ismerteti a kliensoldali kérések feldolgozásának folyamatát, amely magában foglalja a különböző rétegek működését, valamint azok szerepköreit. A cél, hogy áttekinthető legyen, hogyan kommunikálnak a kliensoldali komponensek a háttérrendszerrel a hatékony és megbízható adatfeldolgozás érdekében.
 
-## Web Interface
-- Minden felhasználói interakció a programmal itt kell lefolytatni
+## Webes felület
+
+- A parancsok végrehajtása a felhasználók számára elérhető webes felületen kezdődik.
+- Ez a réteg biztosítja a rendszerrel való interakció elsődleges pontját, ugyanakkor a legkevesebb rálátással rendelkezik a teljes architektúra működésére.
+- A felhasználói műveletek a funkciónak megfelelő "Client Command"-ba kerülnek továbbításra, a MediatR keretrendszer alkalmazásával.
+
+**Fájl:** `\Pages\Features\IAM\LoginPage.razor`
+
+```c#
+private async void Login()
+{
+    LoginUserClientCommand userClientCommand = new LoginUserClientCommand(DialogService)
+    {
+        Username = username,
+        Password = password
+    };
+    await Mediator.Send(userClientCommand);
+}
+```
+
+### Hibakezelés
+
+- Az alkalmazás hibakezelési folyamata biztosítja, hogy mind a kliens-, mind a szerveroldali problémákról értesítést kapjon a felhasználó a **DialogService** segítségével.
+- A "Client Command" osztályok paraméterként kapják meg a szükséges hibakezelési információkat, ezáltal lehetővé téve a pontos és célzott visszajelzéseket.
 
 ## Client Command
-- A UI-ből történő kéréseket továbbítja a megfelő helyre a pipeline-on belül
-- A szükséges adatok és utasítások tárolandók bennük
+
+- A Client Command osztályok feladata a beérkező adatok előkészítése és a "Communication Bus"-on való továbbítása.
+- Minden Client Command implementálja az `IClientCommand<bool>` interfészt, amely biztosítja a pipeline folyamatosságát és megfelelő működését.
 
 ## Client Behaviour
-- Client Command futtatásának logikája
-- Funkciója:
-  - Bemeneti adatok ellenőrzése
-  - UI frissítése
-  - Hibakezelés, felhasználó tájékoztatása
+
+- Az elsődleges adatellenőrzéseket a Client Behaviour osztályok végzik. Csak az `IClientCommand<T>` interfészből származtatott osztályokkal dolgoznak.
+- Ezek az osztályok biztosítják a kérések megfelelő továbbítását a pipeline következő szakaszára. Amennyiben egy adott szakasz nem képes kezelni a beérkező adatokat, a rendszer értesítést küld a felhasználónak. Sikeres vizsgálat esetén a feldolgozás tovább folytatódik.
 
 ## Client Command Handler
-- Client Command utasításának elvégzését biztosítja
-- Az API kommunikációnak az eredményét továbbítja a felhasználónak
+
+- A `ClientCommand` objektumok a Client Command Handler segítségével kerülnek továbbításra az API irányába.
+- Ez az osztály elvégzi a backendre nem vonatkozó ellenőrzéseket, és a kapott API válaszokat feldolgozza, majd a felhasználó számára továbbítja azokat.
 
 ## API Command
-- API utasítások paramétereit tartalmazza, pl: endpoint, HTTP metódus, beérkezett adatok
 
+- Az API-val való kommunikációhoz szükséges paraméterek, mint például az endpointok és a HTTP metódusok, az API Command osztályokban kerülnek definiálásra.
+- Az osztályok gondoskodnak az adatok validálásáról és a válaszok megfelelő kezeléséről is.
+
+```c#
+public override string GetApiEndpoint()
+{
+    return Path.Join(ApiBaseUrl, "/api/v1/iam/register");
+}
+
+public override HttpMethodEnum GetApiMethod()
+{
+    return HttpMethodEnum.Post;
+}
+```
 
 ## API Command Handler
-- API Command lefutását biztosítják
+
+- Az API Command Handler osztályok felelősek az adatbázisból lekért adatok összevetéséért, lekérdezéséért vagy feltöltéséért.
+- Az adatokat ideiglenesen helyben tárolja, amíg az API nem kap közvetlen utasítást a megfelelő művelet végrehajtására.
+- A bemeneti adatok megfelelőségét ellenőrzi, és az API válaszait az `ApiCommandResponse` osztály dolgozza fel, amely aztán továbbítja az eredményeket a `ClientCommandHandler` felé.
 
 ## Generic API Command Handler
-- API Commandban meghatározott paraméterek alapján továbbítja az utasítást a Backendnek
-- Backend válaszát visszaadja Client Command Handler-nek
+
+- A MediatR keretrendszer lehetőséget ad arra, hogy minden funkcióhoz egyedi `ApiCommandHandler`-t hozzunk létre. Ezek az osztályok a `GenericApiCommandHandler`-ből származnak.
+- A Generic API Command Handler végrehajtja az `ApiCommand` osztályokban meghatározott műveleteket.
+- Az osztályok felelősek a végrehajtás eredményéről szóló tájékoztatás biztosításáért a felhasználók számára.
+

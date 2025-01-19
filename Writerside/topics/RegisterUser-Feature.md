@@ -35,16 +35,16 @@ Ez a fájl tartalmazza a regisztrációs oldalt megvalósító Blazor komponenst
 
 ### Szerver Oldali Komponensek
 
-#### `vetcms/src/vetcms.Application/Features/IAM/RegisterUser/RegisterUserCommandHandler.cs`
+#### `vetcms/src/vetcms.ServerApplication/Features/IAM/RegisterUser/RegisterUserCommandHandler.cs`
 Ez a fájl tartalmazza a `RegisterUserCommandHandler` osztályt, amely a `RegisterUserApiCommand` kezelésével új felhasználót hoz létre, és azt a tárolóba helyezi.
 
-#### `vetcms/src/vetcms.Application/Features/IAM/RegisterUser/RegisterUserController.cs`
+#### `vetcms/src/vetcms.ServerApplication/Features/IAM/RegisterUser/RegisterUserController.cs`
 Az `IamController` osztály itt található, amely kezeli a felhasználó regisztrációjára vonatkozó HTTP POST kéréseket a `RegisterUser` metóduson keresztül.
 
-#### `vetcms/src/vetcms.Application/Domain/Entity/User.cs`
+#### `vetcms/src/vetcms.ServerApplication/Domain/Entity/User.cs`
 A `User` entitás ebben a fájlban van definiálva. Tulajdonságai: `Email`, `PhoneNumber`, `VisibleName`, `Password`.
 
-#### `vetcms/src/vetcms.Application/Features/IAM/PasswordUtility.cs`
+#### `vetcms/src/vetcms.ServerApplication/Features/IAM/PasswordUtility.cs`
 A `PasswordUtility` osztály módszereket kínál a jelszavak hash-elésére és ellenőrzésére.
 
 ---

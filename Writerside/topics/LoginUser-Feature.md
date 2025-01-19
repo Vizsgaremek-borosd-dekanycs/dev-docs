@@ -25,12 +25,12 @@ A **LoginUser** funkció lehetővé teszi a felhasználók számára, hogy e-mai
 
 1. **LoginUserCommandHandler.cs**
 
-    - **Elérhetőség:** `vetcms/src/vetcms.Application/Features/IAM/LoginUser/LoginUserCommandHandler.cs`
+    - **Elérhetőség:** `vetcms/src/vetcms.ServerApplication/Features/IAM/LoginUser/LoginUserCommandHandler.cs`
     - **Leírás:** Ez az osztály kezeli a bejelentkezési logikát. Ellenőrzi a felhasználót az e-mail cím alapján, validálja a jelszót, ellenőrzi a jogosultságokat, majd generál egy hozzáférési tokent.
 
 2. **LoginUserController.cs**
 
-    - **Elérhetőség:** `vetcms/src/vetcms.Application/Features/IAM/LoginUser/LoginUserController.cs`
+    - **Elérhetőség:** `vetcms/src/vetcms.ServerApplication/Features/IAM/LoginUser/LoginUserController.cs`
     - **Leírás:** Ez a vezérlő definiálja a felhasználói bejelentkezés API végpontját, és a beérkező kérelmeket a megfelelő parancskezelőhöz továbbítja.
 
 3. **LoginUserApiCommand.cs**

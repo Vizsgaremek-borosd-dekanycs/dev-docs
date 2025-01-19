@@ -29,12 +29,11 @@ private async void Login()
 A hibakezelési mechanizmus biztosítja, hogy a kliens- és szerveroldali problémák esetén a felhasználó megfelelő értesítést kap a **DialogService** segítségével. A hibák kezelése a probléma forrásától és szintjétől függően történik:
 
 - **ClientCommandHandler**: Felhasználói műveletekből eredő hibák kezelésére szolgál.
-- **ApiCommand**: Az `ApiCommandValidator` validálásán átmenő hibákat kezeli.
-- **CommandHandler**: Adatbázis-specifikus problémák kezelésére, például duplikált e-mailcímek.
+- **ApiCommand**: A szerveroldali hibákat továbbítja a felhasználó felé.
 - **GenericApiCommandHandler**: API-kommunikáció során fellépő hibák kezelése.
 - **UnhandledExceptionBehaviour**: Ismeretlen vagy nem kezelt hibák esetén alkalmazott megoldás.
 
-A „Client Command” osztályok paraméterként kapják meg a hibakezelési információkat, így biztosítva a pontos visszajelzéseket.
+A `ClientCommand` osztályok paraméterként kapják meg a `DialogService`-t, így biztosítva a pontos visszajelzéseket.
 
 ## Client Command
 

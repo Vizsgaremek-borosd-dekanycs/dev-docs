@@ -18,7 +18,7 @@ A **LoginUser** funkció lehetővé teszi a felhasználók számára, hogy e-mai
 ### Kliensoldali Implementáció
 
 1. **LoginUserClientCommand.cs**
-    - **Elérhetőség:** `vetcms/vetcms.ClientApplication/Features/IAM/LoginUser/LoginUserClientCommand.cs`
+    - **Elérhetőség:** `vetcms/src/vetcms.ClientApplication/Features/IAM/LoginUser/LoginUserClientCommand.cs`
     - **Leírás:** Ez az osztály a felhasználó bejelentkezési folyamatának kliensoldali kezdeményezését valósítja meg. Tartalmazza a felhasználónév és a jelszó tulajdonságait.
 
 ### Szerveroldali Implementáció

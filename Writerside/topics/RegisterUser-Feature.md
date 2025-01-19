@@ -12,10 +12,10 @@ A `RegisterUser` funkció a felhasználói regisztráció kezelését végzi a r
 
 ### Kliens Oldali Komponensek
 
-#### `vetcms/vetcms.ClientApplication/Features/IAM/RegisterUser/RegisterUserClientCommand.cs`
+#### `vetcms/src/vetcms.ClientApplication/Features/IAM/RegisterUser/RegisterUserClientCommand.cs`
 Ez a fájl tartalmazza a `RegisterUserClientCommand` osztályt, amely a kliens oldali regisztrációs parancsot definiálja.
 
-#### `vetcms/vetcms.ClientApplication/Features/IAM/RegisterUser/RegisterUserClientCommandHandler.cs`
+#### `vetcms/src/vetcms.ClientApplication/Features/IAM/RegisterUser/RegisterUserClientCommandHandler.cs`
 A `RegisterUserClientCommandHandler` osztály ebben a fájlban található, amely felelős a kliens oldali regisztrációs parancs kezeléséért és a szerver oldali API-val történő kommunikációért.
 
 #### `vetcms/src/vetcms.BrowserPresentation/Pages/Features/IAM/RegisterPage.razor`

@@ -98,4 +98,3 @@ A feldolgozás eredménye az `ApiCommandResponse` objektumon keresztül kerül v
 ---
 
 Ez a dokumentum átfogó képet nyújt a szerveroldali kérések kezeléséről, kiemelve a működésüket segítő kulcsfontosságú mechanizmusokat és komponenseket. Gyakorlati alkalmazásként javasolt a pipeline viselkedésének rendszeres tesztelése és a kulcskomponensek naprakészen tartása a biztonságos és hatékony működés érdekében.
-

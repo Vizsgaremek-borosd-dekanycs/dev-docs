@@ -4,11 +4,11 @@
 
 Ez a dokumentum áttekintést nyújt a kliensoldali kérések feldolgozásáról, részletezve a rendszer különböző rétegeinek működését és szerepét. Célja, hogy bemutassa a kliensoldali komponensek és a háttérrendszer közötti kommunikáció folyamatát az adatfeldolgozás hatékonysága és megbízhatósága érdekében.
 
-![](../../assets/Client side api command handling.png)
+![](../../assets/Client%20side%20api%20command%20handling.png)
 
 ## Webes felület
 
-A felhasználói interakciók elsődleges pontja a webes felület, amely biztosítja a rendszer funkcionalitásához való hozzáférést. Ez a réteg korlátozott betekintést nyújt a teljes architektúra működésébe, de kulcsszerepet tölt be a felhasználói műveletek továbbításában a „Client Command” komponensek felé.
+A felhasználói interakciók elsődleges pontja a webes felület, amely biztosítja a rendszer funkcionalitásához való hozzáférést. Ez a réteg korlátozott betekintést nyújt a teljes architektúra működésébe, de kulcsszerepet tölt be a felhasználói műveletek továbbításában a "Client Command" komponensek felé.
 
 **Fájl:** `\Pages\Features\IAM\LoginPage.razor`
 
@@ -37,11 +37,11 @@ A `ClientCommand` osztályok paraméterként kapják meg a `DialogService`-t, í
 
 ## Client Command
 
-A „Client Command” osztályok feladata a webes felületről érkező adatok előkészítése és a „Client Command Bus” által történő továbbításuk. Minden „Client Command” implementálja az `IClientCommand<bool>` interfészt, amely biztosítja a pipeline konzisztens működését.
+A "Client Command" osztályok feladata a webes felületről érkező adatok előkészítése és a "Client Command Bus" által történő továbbításuk. Minden "Client Command" implementálja az `IClientCommand<bool>` interfészt, amely biztosítja a pipeline konzisztens működését.
 
 ## Client Behaviour
 
-A „Client Behaviour” osztályok az elsődleges adatellenőrzésekért felelősek. A kérések érkezésekor lehetőséget biztosítanak a kérés elfogására, módosítására, vagy cseréjére.
+A "Client Behaviour" osztályok az elsődleges adatellenőrzésekért felelősek. A kérések érkezésekor lehetőséget biztosítanak a kérés elfogására, módosítására vagy cseréjére.
 
 - **UnhandledExceptionBehaviour**: Az ismeretlen hibák kezelésére használt, az `IClientCommand<T>` osztályokat figyeli.
 - **ValidationBehaviour**: Az `ApiCommandBase<T>` osztályokat validálja, és a hibás kéréseket visszautasítja hibaüzenettel.
@@ -54,7 +54,7 @@ A `ClientCommand` objektumokat a MediatR keretrendszer továbbítja a `ClientCom
 
 ## API Command
 
-Az API-val való kommunikációhoz szükséges paraméterek az API Command osztályokban vannak definiálva. Ezek az osztályok a MediatR segítségével továbbítják a kéréseket a „GenericApiCommandHandler” felé, amely az adott endpointra vonatkozó műveleteket végrehajtja.
+Az API-val való kommunikációhoz szükséges paraméterek az API Command osztályokban vannak definiálva. Ezek az osztályok a MediatR segítségével továbbítják a kéréseket a "GenericApiCommandHandler" felé, amely az adott endpointra vonatkozó műveleteket végrehajtja.
 
 **Példa:**
 
@@ -76,5 +76,5 @@ Az API Command Handler-ek a `GenericApiCommandHandler` osztályból örököltet
 
 ## Generic API Command Handler
 
-A Generic API Command Handler az összes „ApiCommand” osztályban definiált műveletet végrehajtja. Ez az osztály felelős a műveletek eredményeinek feldolgozásáért és a felhasználói tájékoztatás biztosításáért.
+A Generic API Command Handler az összes "ApiCommand" osztályban definiált műveletet végrehajtja. Ez az osztály felelős a műveletek eredményeinek feldolgozásáért és a felhasználói tájékoztatás biztosításáért.
 

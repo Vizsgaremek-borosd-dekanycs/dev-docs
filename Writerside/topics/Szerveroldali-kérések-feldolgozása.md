@@ -1,28 +1,36 @@
 # Szerveroldali Kérések Feldolgozása
 
-#### Bevezetés
+---
 
-Ez a dokumentum részletes áttekintést nyújt a szerveroldali kérések feldolgozásának működéséről. Bemutatja a rendszer különböző rétegeinek szerepét, az adatáramlás folyamatát, valamint a kérések kezelésében részt vevő komponensek közötti együttműködést.
+### **Bevezetés**
 
-#### HTTP Kérés
+Ez a dokumentum részletesen bemutatja a szerveroldali kérések feldolgozásának teljes folyamatát. Ismerteti a rendszer különböző rétegeinek szerepét, valamint a kommunikáció és adatkezelés lépéseit az alkalmazás belső működése során.
 
-Az `GenericApiCommandHandler` által létrehozott HTTP-kérések az ASP.NET Core API-ban kerülnek feldolgozásra. Ezek a kérések számos információt tartalmaznak, amelyek meghatározzák a művelet végrehajtásának módját és feltételeit. A kérések tartalma az alábbiak szerint alakul:
+---
 
-- **Autorizáció**: A kliensoldali kérések általában tokeneken keresztül igazolják magukat.
-- **HTTP-metódusok**: A műveletek típusa, például GET (lekérdezés), POST (létrehozás), PUT (módosítás), vagy DELETE (törlés).
-- **Paraméterek és payload**: A metódusok végrehajtásához szükséges adatok.
-- **Célútvonal (endpoint)**: Az API azon végpontja, amely a kérés célja.
+### **HTTP Kérések Felépítése**
 
-#### Controller
+Az általános HTTP-kérések az `GenericApiCommandHandler` komponensen keresztül indulnak el, majd eljutnak az ASP.NET Core API-hoz. A kérések az alábbi adatokat tartalmazzák:
 
-A szerveroldali folyamat elsődleges eleme a **Controller**, amely felelős a kliensoldalról érkező adatok fogadásáért, előkészítéséért, majd a MediatR pipeline-ba történő továbbításáért. Az adatok továbbítása előtt a **`ApiCommandBaseExtensions.Prepare`** metódus biztosítja a megfelelő előkészítést. Ennek a metódusnak a legfontosabb feladatai a következők:
+- **Autorizáció:** Tokenek formájában biztosított jogosultságok.
+- **HTTP-metódusok:** Az alkalmazás a GET, POST, PUT és DELETE módszereket támogatja.
+- **Metódusokhoz kapcsolódó adatok:** Paraméterek és payload adatok, amelyek meghatározzák a műveleteket.
+- **Célútvonal:** Az endpoint, amely meghatározza a kérés irányát.
 
-1. **AuthenticatedApiCommandBase és UnauthenticatedApiCommandBase osztályok szétválasztása**:
-    - Az **AuthenticatedApiCommandBase** osztály esetében a metódus kinyeri a felhasználó tokenjét az HTTP kérésből.
-    - Az **UnauthenticatedApiCommandBase** osztály adatait további feldolgozás nélkül továbbítja.
+Fontos megjegyezni, hogy a `GenericApiCommandHandler` a kérés előkészítéséért felel, nem pedig az egyéni válaszok kezeléséért.
 
-2. **Token kezelése**:
-    - A megfelelő autentikáció biztosításához a tokeneket a kérésből az alábbi módszerrel vonja ki:
+---
+
+### **Controller Működése**
+
+A Controller osztály feladata a beérkezett adatok előkészítése, majd ezek továbbítása a MediatR pipeline-on keresztül a Command Handler részére. Az adatok feldolgozása előtt az `ApiCommandBaseExtensions.Prepare` metódus hajtja végre az alábbi lépéseket:
+
+- **Autentikált Kérések:** Az `AuthenticatedApiCommandBase` objektumok esetében kinyeri a felhasználó tokenjét (Bearer token) a headerből, majd hozzárendeli azt az adott parancshoz.
+- **Nem Autentikált Kérések:** Az `UnauthenticatedApiCommandBase` objektumokat továbbítja módosítás nélkül.
+
+A Controller réteg biztosítja az adatok helyes formázását, mielőtt azokat továbbítaná a pipeline felé. Az előkészített adatok garantálják a folyamat további lépéseinek sikeres végrehajtását.
+
+Példa kódrészlet az eljáráshoz:
 
 ```c#
 namespace vetcms.ServerApplication.Common.Abstractions.Api
@@ -47,11 +55,13 @@ namespace vetcms.ServerApplication.Common.Abstractions.Api
 }
 ```
 
-#### Server Behaviours
+---
 
-Az előkészített kérések a MediatR pipeline-ba kerülnek, amelyben különböző szerveroldali viselkedési osztályok (behaviours) szűrik és dolgozzák fel azokat. Ezek az osztályok a **`ServerDependencyInitializer`** segítségével kerülnek regisztrálásra, meghatározott sorrendben.
+### **MediatR Behaviour Osztályok a Szerveroldalon**
 
-##### Pipeline Regisztráció:
+Az előkészített kérések a MediatR pipeline-ba kerülnek, ahol a szerveroldali "viselkedés" osztályokon haladnak át. Ezek az osztályok a `ServerDependencyInitializer` osztályban vannak regisztrálva, a működési sorrend figyelembevételével. A sorrend különösen fontos, mert meghatározza a viselkedések hatásának sorrendiségét, és biztosítja az ellenőrzési lépések helyes végrehajtását.
+
+Az alábbi kódrészlet mutatja a pipeline konfigurálását:
 
 ```c#
 services.AddMediatR(options =>
@@ -63,27 +73,29 @@ services.AddMediatR(options =>
 });
 ```
 
-##### Viselkedési osztályok és szerepük:
+Az egyes osztályok szerepe és futási sorrendje:
 
-1. **ValidationBehaviour**:
-    - Ez az osztály a **`SharedModels`** gyűjtemény része.
-    - Elsődleges feladata az `ApiCommandBase`-ből származtatott objektumok érvényességének ellenőrzése.
-    - A `CommandValidator` által végzett validáció alapján a hibás adatok elutasításra kerülnek.
+1. **ValidationBehaviour:**
+   - Helye: `SharedModels`.
+   - Feladata: Az `ApiCommandBase` osztály leszármazottainak validálása, a hibás bemenetek visszautasítása a `CommandValidator` segítségével.
 
-2. **UserValidationBehavior**:
-    - Az `AuthenticatedApiCommandBase` osztályt használó objektumokat kezeli.
-    - Ellenőrzi, hogy a felhasználói token létezik-e és érvényes-e a kérés feldolgozása során.
+2. **UserValidationBehavior:**
+   - Helye: `ServerApplication`.
+   - Feladata: Az `AuthenticatedApiCommandBase` objektumok kezelése, amelynek során ellenőrzi a felhasználó token létezését és érvényességét.
 
-3. **PermissionRequirementBehaviour**:
-    - Az `AuthenticatedApiCommandBase` osztályból származtatott objektumokat vizsgálja.
-    - Megállapítja, hogy a felhasználó rendelkezik-e a szükséges jogosultságokkal az adott művelet végrehajtásához.
+3. **PermissionRequirementBehaviour:**
+   - Helye: `ServerApplication`.
+   - Feladata: Ellenőrzi, hogy az adott felhasználó rendelkezik-e a szükséges jogosultságokkal az adott művelet elvégzéséhez.
 
+---
 
-#### Command Handler
+### **Command Handler**
 
-A Controller által továbbított kérések végrehajtása a **Command Handlerekben** történik. Ezek az osztályok az üzleti logika központjai, ahol a kérések végső feldolgozása történik. A Command Handlerek felelősségi körei a következők:
+A Controller osztályok által készített parancsok feldolgozása a Command Handler komponensekben történik. Ezek az osztályok hajtják végre az üzleti logikát, miközben interakcióba lépnek további rendszerkomponensekkel, például adatbázisokkal vagy külső szolgáltatásokkal.
 
-- Az üzleti szabályok alkalmazása az adott kérésre.
-- Interakció más rendszerekkel vagy komponensekkel (például adatbázis-műveletek).
-- Az eredmények előkészítése és azok továbbítása az `ApiCommandResponse` osztályon keresztül.
+A feldolgozás eredménye az `ApiCommandResponse` objektumon keresztül kerül vissza a klienshez, biztosítva a megfelelő válaszformátumot és státuszinformációkat. Az `ApiCommandResponse` objektum központi szerepet játszik az eredmények reprezentálásában, megkönnyítve a hibák kezelését és az eredmények vizualizációját.
+
+---
+
+Ez a dokumentum átfogó képet nyújt a szerveroldali kérések kezeléséről, kiemelve a működésüket segítő kulcsfontosságú mechanizmusokat és komponenseket. Gyakorlati alkalmazásként javasolt a pipeline viselkedésének rendszeres tesztelése és a kulcskomponensek naprakészen tartása a biztonságos és hatékony működés érdekében.
 

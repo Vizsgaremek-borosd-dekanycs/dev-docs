@@ -6,13 +6,13 @@
                  name="Fejlesztői Dokumentáció - Állatorvosi nyilvántartó rendszer"
                  start-page="starter.md">
 
-    <toc-element topic="Szerveroldali-kérések-feldolgozása.md"/>
     <toc-element topic="starter.md"/>
     <toc-element topic="Dokumentum-célközönsége.md"/>
     <toc-element topic="Szoftverkövetelmények.md"/>
     <toc-element topic="Alkalmazott-architektúra.md"/>
     <toc-element topic="API-Kommunikációra-vonatkozó-megkötések.md"/>
     <toc-element topic="Kérések-feldolgozása-a-kliensoldalon.md"/>
+    <toc-element topic="Szerveroldali-kérések-feldolgozása.md"/>
     <toc-element topic="Autentikacio-es-Autorizacio.md"/>
     <toc-element topic="Features.md">
         <toc-element topic="Feature-IAM.md">

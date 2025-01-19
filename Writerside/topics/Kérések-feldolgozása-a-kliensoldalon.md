@@ -28,10 +28,12 @@ private async void Login()
 
 A hibakezelési mechanizmus biztosítja, hogy a kliens- és szerveroldali problémák esetén a felhasználó megfelelő értesítést kap a **DialogService** segítségével. A hibák kezelése a probléma forrásától és szintjétől függően történik:
 
+
 - **ClientCommandHandler**: Felhasználói műveletekből eredő hibák kezelésére szolgál.
 - **ApiCommand**: A szerveroldali hibákat továbbítja a felhasználó felé.
 - **GenericApiCommandHandler**: API-kommunikáció során fellépő hibák kezelése.
 - **UnhandledExceptionBehaviour**: Ismeretlen vagy nem kezelt hibák esetén alkalmazott megoldás.
+
 
 A `ClientCommand` osztályok paraméterként kapják meg a `DialogService`-t, így biztosítva a pontos visszajelzéseket.
 
@@ -44,7 +46,7 @@ A "Client Command" osztályok feladata a webes felületről érkező adatok elő
 A "Client Behaviour" osztályok az elsődleges adatellenőrzésekért felelősek. A kérések érkezésekor lehetőséget biztosítanak a kérés elfogására, módosítására vagy cseréjére.
 
 - **UnhandledExceptionBehaviour**: Az ismeretlen hibák kezelésére használt, az `IClientCommand<T>` osztályokat figyeli.
-- **ValidationBehaviour**: Az `ApiCommandBase<T>` osztályokat validálja, és a hibás kéréseket visszautasítja hibaüzenettel.
+- **ValidationBehaviour**: Az `ApiCommandBase<T>` osztályokat validálja, és a hibás formátumu bemeneteket visszautasítja hibaüzenettel.
 
 Ezek az osztályok biztosítják, hogy a pipeline áramlása megfelelően történjen. Ha valamelyik szakasz nem tudja kezelni a kérést, értesítést küld a felhasználónak, sikeres ellenőrzés esetén pedig folytatódik a feldolgozás.
 
@@ -76,5 +78,7 @@ Az API Command Handler-ek a `GenericApiCommandHandler` osztályból örököltet
 
 ## Generic API Command Handler
 
+
 A Generic API Command Handler az összes "ApiCommand" osztályban definiált műveletet végrehajtja. Ez az osztály felelős a műveletek eredményeinek feldolgozásáért és a felhasználói tájékoztatás biztosításáért.
+
 

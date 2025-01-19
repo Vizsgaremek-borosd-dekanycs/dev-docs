@@ -1,3 +1,3 @@
-# IAM Feature Groups
+# IAM Feature Group
 
 

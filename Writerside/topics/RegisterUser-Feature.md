@@ -12,10 +12,10 @@ A `RegisterUser` funkció a felhasználói regisztráció kezelését végzi a r
 
 ### Kliens Oldali Komponensek
 
-#### `vetcms/vetcms.ClientApplication/Features/IAM/RegisterUser/RegisterUserClientCommand.cs`
+#### `vetcms/src/vetcms.ClientApplication/Features/IAM/RegisterUser/RegisterUserClientCommand.cs`
 Ez a fájl tartalmazza a `RegisterUserClientCommand` osztályt, amely a kliens oldali regisztrációs parancsot definiálja.
 
-#### `vetcms/vetcms.ClientApplication/Features/IAM/RegisterUser/RegisterUserClientCommandHandler.cs`
+#### `vetcms/src/vetcms.ClientApplication/Features/IAM/RegisterUser/RegisterUserClientCommandHandler.cs`
 A `RegisterUserClientCommandHandler` osztály ebben a fájlban található, amely felelős a kliens oldali regisztrációs parancs kezeléséért és a szerver oldali API-val történő kommunikációért.
 
 #### `vetcms/src/vetcms.BrowserPresentation/Pages/Features/IAM/RegisterPage.razor`
@@ -35,16 +35,16 @@ Ez a fájl tartalmazza a regisztrációs oldalt megvalósító Blazor komponenst
 
 ### Szerver Oldali Komponensek
 
-#### `vetcms/src/vetcms.Application/Features/IAM/RegisterUser/RegisterUserCommandHandler.cs`
+#### `vetcms/src/vetcms.ServerApplication/Features/IAM/RegisterUser/RegisterUserCommandHandler.cs`
 Ez a fájl tartalmazza a `RegisterUserCommandHandler` osztályt, amely a `RegisterUserApiCommand` kezelésével új felhasználót hoz létre, és azt a tárolóba helyezi.
 
-#### `vetcms/src/vetcms.Application/Features/IAM/RegisterUser/RegisterUserController.cs`
+#### `vetcms/src/vetcms.ServerApplication/Features/IAM/RegisterUser/RegisterUserController.cs`
 Az `IamController` osztály itt található, amely kezeli a felhasználó regisztrációjára vonatkozó HTTP POST kéréseket a `RegisterUser` metóduson keresztül.
 
-#### `vetcms/src/vetcms.Application/Domain/Entity/User.cs`
+#### `vetcms/src/vetcms.ServerApplication/Domain/Entity/User.cs`
 A `User` entitás ebben a fájlban van definiálva. Tulajdonságai: `Email`, `PhoneNumber`, `VisibleName`, `Password`.
 
-#### `vetcms/src/vetcms.Application/Features/IAM/PasswordUtility.cs`
+#### `vetcms/src/vetcms.ServerApplication/Features/IAM/PasswordUtility.cs`
 A `PasswordUtility` osztály módszereket kínál a jelszavak hash-elésére és ellenőrzésére.
 
 ---

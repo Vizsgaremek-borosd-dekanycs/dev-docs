@@ -68,5 +68,5 @@ Az egyes osztályok szerepei és futási sorrendjük:
 
 ## Command Handler
 
-A Controller osztályok által kiadott utasítások végrehajtása a Command Handlerekben történik. Ezek az osztályok végzik el az adatbázis műveleteket, például az adatok ellenőrzését, formázását vagy lekérdezését. A műveletek eredménye az `ApiCommandResponse` osztályon keresztül jut el a klienshez.
+A Controller osztályok által kiadott utasítások végrehajtása a Command Handlerekben történik. Ezek az osztályok hajtják végre az üzleti logikát és lépnek interakcióba a további komponensekkel. A műveletek eredménye az `ApiCommandResponse` osztályon keresztül jut el a klienshez.
 

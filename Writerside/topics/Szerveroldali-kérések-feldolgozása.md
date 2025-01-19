@@ -8,7 +8,7 @@ Ez a dokumentum bemutatja a szerveroldalon történő kérések feldolgozásána
 
 ## HTTP Kérés
 
-Az `GenericApiCommandHandler` által indított HTTP-kérések megjelennek az URL-ben, amelyeket az ASP.NET rendszer elkap. A kérések az alábbi információkat tartalmazzák:
+Az `GenericApiCommandHandler` által indított HTTP-kérések megjelennek az URL-ben, amelyeket az ASP.NET Core API kezel. A kérések az alábbi információkat tartalmazzák:
 
 - **Autorizáció**: tokenek formájában.
 - **HTTP-metódusok**: például GET, POST, PUT, DELETE.

@@ -1,22 +1,27 @@
-# Szerveroldali kérések feldolgozása
+# Szerveroldali Kérések Feldolgozása
 
 ## Bevezetés
 
-Ebben a dokumentumban azt fogjuk bemutatni, hogyan kerülnek a kérések feldolgozásra a szerveroldalon, közbe részletezve a rendszer különböző rétegeinek működését és szerepét.
+Ez a dokumentum bemutatja a szerveroldalon történő kérések feldolgozásának folyamatát, részletesen ismertetve a rendszer különböző rétegeinek szerepét és működését.
 
-![](../../assets/Server Side Command Handling.png)
+![](../../assets/Server%20Side%20Command%20Handling.png)
 
-## Http Request
-- A `GenericApiCommandHandler` által lefuttatott http kérés megjelenik az URL-ben, amit az ASPNET elkap.
-- Ebben szerepelnek olyan információk mint:
-  - **Authorisation**: token
-  - **Http metódusok**
-  - **Metódusokhoz tartozó adatok**
-  - **Kérés úticélja**
+## HTTP Kérés
+
+Az `GenericApiCommandHandler` által indított HTTP-kérések megjelennek az URL-ben, amelyeket az ASP.NET rendszer elkap. A kérések az alábbi információkat tartalmazzák:
+
+- **Autorizáció**: tokenek formájában.
+- **HTTP-metódusok**: például GET, POST, PUT, DELETE.
+- **Metódushoz tartozó adatok**: például paraméterek és payload.
+- **Célútvonal**: az endpoint, amelyre a kérés irányul.
 
 ## Controller
-- Megfelelő utasítással és endpointtal rendelkező Controllelen a kapott adatokat felkészíti , a MediatR pipeline-on keresztül, a Command Handlernek való átadását.
-- Az átadás előtt azonban még áthalad az `ApiCommandBaseExtensions` osztályon. Ennek az a szerepe, hogy az `AuthenticatedApiCommandBase` és az `UnAuthenticatedApiCommandBase` osztályokból származtatottakat megkülönböztesse. Az előbbinél az osztály kinyeri az URL-ből a felhasználó tokenjét, míg az utóbbinál csak visszaküldi a bejövő kérést magát.
+
+A Controller osztály a beérkező adatokat előkészíti a MediatR pipeline-on keresztül történő továbbításra a Command Handler részére. Az adatfeldolgozás előtt az adatok áthaladnak az `ApiCommandBaseExtensions` osztályon, amely az alábbi feladatokat látja el:
+
+- Megkülönbözteti az `AuthenticatedApiCommandBase` és az `UnauthenticatedApiCommandBase` osztályokat.
+- Az `AuthenticatedApiCommandBase` esetében kinyeri a felhasználó tokenjét az URL-ből.
+- Az `UnauthenticatedApiCommandBase` esetén változtatás nélkül továbbadja a kérést.
 
 ```c#
 namespace vetcms.ServerApplication.Common.Abstractions.Api
@@ -43,4 +48,27 @@ namespace vetcms.ServerApplication.Common.Abstractions.Api
 
 ## Server Behaviours
 
+A kérések előkészítése után a MediatR pipeline-ba kerülnek, ahol különböző szerverviselkedési osztályokon futnak keresztül. Ezek az osztályok a `ServerDependencyInitializer` osztályban kerülnek regisztrálásra, a megfelelő sorrend betartásával.
+
+```c#
+services.AddMediatR(options =>
+{
+    options.RegisterServicesFromAssembly(typeof(ServerDependencyInitializer).Assembly);
+    options.AddOpenBehavior(typeof(ValidationBehaviour<,>));
+    options.AddOpenBehavior(typeof(UserValidationBehavior<,>));
+    options.AddOpenBehavior(typeof(PermissionRequirementBehaviour<,>));
+});
+```
+
+Az egyes osztályok szerepei és futási sorrendjük:
+
+- **ValidationBehaviour**: Ez az osztály a `SharedModels`-ben található, és kizárólag az `ApiCommandBase` osztályból származtatott objektumokat kezeli. Feladata a `CommandValidator` által kiértékelt bemenetek feldolgozása és hibás adatok esetén azok visszautasítása.
+- **UserValidationBehavior**: A `ServerApplication`-ben található osztály, amely az `AuthenticatedApiCommandBase` osztályból származtatott objektumokat kezeli. Ellenőrzi a felhasználói token létezését és érvényességét.
+- **PermissionRequirementBehaviour**: Szintén a `ServerApplication` része, és az `AuthenticatedApiCommandBase` osztályból származtatott objektumokat kezeli. Célja annak ellenőrzése, hogy a felhasználó rendelkezik-e a szükséges jogosultságokkal az adott művelet végrehajtásához.
+
 ## Command Handler
+
+A Controller osztályok által kiadott utasítások végrehajtása a Command Handlerekben történik. Ezek az osztályok végzik el az adatbázis műveleteket, például az adatok ellenőrzését, formázását vagy lekérdezését.
+
+A műveletek eredménye az `ApiCommandResponse` osztályon keresztül jut el a klienshez.
+

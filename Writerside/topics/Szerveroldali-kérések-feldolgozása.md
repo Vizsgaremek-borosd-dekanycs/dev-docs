@@ -17,7 +17,7 @@ Az `GenericApiCommandHandler` által indított HTTP-kérések megjelennek az URL
 
 ## Controller
 
-A Controller osztály a beérkező adatokat előkészíti a MediatR pipeline-on keresztül történő továbbításra a Command Handler részére. Az adatfeldolgozás előtt az adatok áthaladnak az `ApiCommandBaseExtensions` osztályon, amely az alábbi feladatokat látja el:
+A Controller osztály a beérkező adatokat előkészíti a MediatR pipeline-on keresztül történő továbbításra a Command Handler részére. Az adatfeldolgozás előtt az adatok áthaladnak az `ApiCommandBaseExtensions.Prepare` metóduson, amely az alábbi feladatokat látja el:
 
 - Megkülönbözteti az `AuthenticatedApiCommandBase` és az `UnauthenticatedApiCommandBase` osztályokat.
 - Az `AuthenticatedApiCommandBase` esetében kinyeri a felhasználó tokenjét az URL-ből.

@@ -1,6 +1,6 @@
 # API Konvenciók
 
-Az alábbiakban összefoglaljuk az API-k használatával kapcsolatos legfontosabb szabályokat és elvárásokat, amelyek biztosítják a rendszer megbízhatóságát, biztonságát és teljesítményét.
+Az alábbiakban összefoglalásra kerülnek az API-k használatával kapcsolatos legfontosabb szabályok és elvárások, amelyek biztosítják a rendszer megbízhatóságát, biztonságát és teljesítményét.
 
 > A végpontok dokumentációját az API Végpont dokumentáció tartalmazza [TODO]
 
@@ -15,8 +15,8 @@ Az alábbiakban összefoglaljuk az API-k használatával kapcsolatos legfontosab
 
 ## Modellek regisztálása
 
-Minden a kommunikációhoz szükséges modelt a SharedModels-en keresztül kell regisztrálni, hogy a kliens és a szerver modul által is könnyen hozzáférhető legyen.
-Ezekre a továbbiakban ApiCommand-ként fogunk hivatkozni.
+Minden a kommunikációhoz szükséges modellt a SharedModels-en keresztül kell regisztrálni, hogy a kliens és a szerver modul által is könnyen hozzáférhető legyen.
+Ezekre a továbbiakban ApiCommand-ként lesz hivatkozva.
 
 Az ApiCommand recordot tartalmazó fájlt a `SharedModels/Features/[Feature Group]/[hozzá tartozó feature]` mappában kell létrehozni.
 A fájlnak tartalmaznia kell a record definíciót és a hozzá tartozó validátort, illetve a választ.
@@ -70,7 +70,7 @@ public record LoginUserApiCommandResponse : ICommandResult
     }
 }
 ```
-> A példában szereplő `UnauthenticatedApiCommandBase<T>` öröklést az Autentikáció és autorizáció részben fedjük le.
+> A példában szereplő `UnauthenticatedApiCommandBase<T>` öröklést az Autentikáció és autorizáció részben kerül bemutatásra.
 
 {style="warning"}
 
@@ -118,7 +118,7 @@ public record LoginUserApiCommandResponse : ICommandResult
 ```
 
 ## **Titkosítás**
-- Minden adatforgalmat **HTTPS** felett kell bonyolítani, hogy biztosítsuk az adatok titkosítását.
+- Minden adatforgalmat **HTTPS** felett kell bonyolítani, hogy biztosítva legyen az adatok titkosítása.
 
 ## **API Verziózás**
 - A stabilitás érdekében az API-kat verziózni kell:
@@ -137,19 +137,19 @@ A végpontok elnevezésében követendő szabályok a következők:
     - Használjunk **kötőjelet (`-`)** a több szóból álló nevek elválasztására (pl. `/user-profiles`).
 
 - **Hierarchikus felépítés**:
-    - Az erőforrások közötti kapcsolatokat az URL struktúrában tükrözzük:
+    - Az erőforrások közötti kapcsolatokat az URL struktúrában kell tükrözni:
         - Példa: Egy felhasználó rendelései: `/users/{userId}/orders`.
 
 - **Idempotens és szűkített végpontok**:
-    - Az erőforrások részhalmazait elérő végpontokat alvégpontként adjuk meg:
+    - Az erőforrások részhalmazait elérő végpontokat alvégpontként kell megadni:
         - Példa: Egy specifikus rendelés lekérése: `/orders/{orderId}`.
 
 - **Verziószám az URL-ben**:
-    - Az API verzióját az URL első szegmensében tüntessük fel:
+    - Az API verzióját az URL első szegmensében kell feltüntetni:
         - Példa: `/v1/users`, `/v2/orders`.
 
 - **Speciális műveletek megkülönböztetése**:
-    - Ha az alap CRUD (Create, Read, Update, Delete) műveleteken kívüli speciális funkciókat kell támogatni, külön alvégpontot használjunk:
+    - Ha az alap CRUD (Create, Read, Update, Delete) műveleteken kívüli speciális funkciókat kell támogatni, külön alvégpontot kell használni:
         - Példa: `/users/{userId}/activate` egy felhasználó aktiválására.
 
 ### Példák végpontok kialakítására:

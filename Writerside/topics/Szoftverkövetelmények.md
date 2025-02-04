@@ -1,3 +1,0 @@
-# Szoftverkövetelmények
-
-[TODO]

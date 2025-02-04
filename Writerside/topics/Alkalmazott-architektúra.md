@@ -41,7 +41,7 @@ Egy funkcionális szelet (slice) jellemzően a következő elemeket tartalmazza:
 ### Common
 A **Common** réteg olyan általános, újrahasználható elemeket tartalmaz, amelyek nem kötődnek szorosan az üzleti logikához, de hasznosak az egész alkalmazásban. Ezek a dolgok általában **technikai infrastruktúrával**, **segédosztályokkal**, vagy **alacsony szintű általános logikával** kapcsolatosak.
 
-#### Mit írj a Common-ba:
+#### Mit írjon a Common-ba:
 - **Helper osztályok és funkciók:**
     - Pl. dátumformázók, string manipulációk, fájlkezelés, stb.
     - Példa:
@@ -71,7 +71,7 @@ A **Common** réteg olyan általános, újrahasználható elemeket tartalmaz, am
 ### Domain
 A **Domain** réteg kizárólag az üzleti logikával és az üzleti szabályokkal foglalkozik. Ez a rendszered "magja", ahol az alkalmazásod valódi értéke megjelenik. Ez **független kell legyen a framework-től** vagy bármilyen külső technológiától.
 
-#### Mit írj a Domain-be:
+#### Mit írjon a Domain-be:
 - **Entitások:**
     - Az üzleti logikát reprezentáló objektumok.
     - Példa: `User`, `Order`, `Product`.

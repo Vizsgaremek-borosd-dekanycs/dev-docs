@@ -3,7 +3,7 @@
 
 ## Bevezetés
 
-Az autentikáció és az autorizáció kulcsfontosságú elemei a biztonságos informatikai rendszerek működésének. Az autentikáció során igazoljuk a felhasználó vagy egy rendszer azonosságát, míg az autorizáció meghatározza, hogy az adott entitás milyen műveletek végrehajtására jogosult. Ezen folyamatok integrálása képes biztosítani a rendszerek integritását, adataink védelmét és a műveletek megfelelő szintű szabályozását.
+Az autentikáció és az autorizáció kulcsfontosságú elemei a biztonságos informatikai rendszerek működésének. Az autentikáció során igazolásra kerül a felhasználó vagy egy rendszer azonossága, míg az autorizáció meghatározza, hogy az adott entitás milyen műveletek végrehajtására jogosult. Ezen folyamatok integrálása képes biztosítani a rendszerek integritását, adataink védelmét és a műveletek megfelelő szintű szabályozását.
 
 Ez a dokumentum bemutatja, hogyan érvényesíthetők az autentikációs és autorizációs elvek egy modern rendszerben. Külön kitérünk az API-parancsok kezelésére, a jogosultságok meghatározására, és azok gyakorlati alkalmazására.
 

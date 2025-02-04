@@ -1,6 +1,6 @@
-# Reset Password Feature
+# Jelszó Visszaállítás Funkció
 
-A lehetővé teszi, hogy a felhasználók biztonságosan visszaállítsák jelszavaikat, ha elfelejtették azokat. Ez a funkció magában foglalja a visszaállítási kérelem indítását és egy megerősítő kód segítségével történő hitelesítést.
+A jelszó visszaállítási funkció lehetővé teszi a felhasználók számára, hogy biztonságosan visszaállítsák jelszavaikat, ha elfelejtették azokat. Ez a funkció magában foglalja a visszaállítási kérelem indítását és egy megerősítő kód segítségével történő hitelesítést.
 
 ---
 

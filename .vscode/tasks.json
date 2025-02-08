@@ -1,0 +1,39 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "docker-pull",
+            "type": "shell",
+            "command": "docker pull registry.jetbrains.team/p/writerside/builder/writerside-builder:243.22562",
+            "group": "build"
+        },
+        {
+            "label": "docker-build",
+            "type": "shell",
+            "command": "docker build -t help-website .",
+            "group": "build"
+        },
+        {
+            "label": "docker-run",
+            "type": "shell",
+            "command": "docker run -dit -p 8080:80 help-website",
+            "group": "build"
+        },
+        {
+            "label": "docker-build-and-run",
+            "dependsOn": [
+                "docker-build",
+                "docker-run"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "docker-kill",
+            "type": "shell",
+            "command": "docker ps -q | xargs -r docker kill",
+            "group": "build"
+        }
+    ]
+}

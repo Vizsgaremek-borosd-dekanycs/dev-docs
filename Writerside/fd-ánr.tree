@@ -19,6 +19,7 @@
             <toc-element topic="RegisterUser-Feature.md"/>
             <toc-element topic="ResetPassword-Feature.md"/>
         </toc-element>
+        <toc-element topic="Más-Felhasználó-Adatainak-Módosítása.md"/>
     </toc-element>
     <toc-element topic="Frontend.md">
         <toc-element topic="EditUserDialog-Komponens.md"/>

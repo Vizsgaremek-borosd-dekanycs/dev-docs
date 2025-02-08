@@ -12,7 +12,8 @@ A `ModifyOtherUser` funkció a következő lépések szerint működik:
 1. **Felhasználói Felület**:
     - Az adminisztrátor belép a felhasználókezelő szakaszba az alkalmazásban.
     - Az adminisztrátor kiválasztja a módosítani kívánt felhasználót, és rákattint a "Szerkesztés" gombra.
-    - Egy űrlap jelenik meg a felhasználó aktuális adataival, lehetővé téve az adminisztrátor számára a módosításokat.
+    - Egy űrlap jelenik meg a felhasználó aktuális adataival és jogaival, lehetővé téve az adminisztrátor számára a módosításokat.
+    - A felhasználói jogosultságokat lehet módosítani, egyet vagy akár többet is egyszerre.
 
 2. **Űrlap Beküldés**:
     - Az adminisztrátor frissíti a szükséges mezőket (email, telefonszám, látható név, jelszó, jogosultságok).

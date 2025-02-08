@@ -8,6 +8,7 @@
 
     <toc-element topic="starter.md"/>
     <toc-element topic="Alkalmazott-architektúra.md"/>
+    <toc-element topic="HIba-kezelés-az-alkalmazásban.md"/>
     <toc-element topic="API-Kommunikációra-vonatkozó-megkötések.md"/>
     <toc-element topic="Kérések-feldolgozása-a-kliensoldalon.md"/>
     <toc-element topic="Szerveroldali-kérések-feldolgozása.md"/>

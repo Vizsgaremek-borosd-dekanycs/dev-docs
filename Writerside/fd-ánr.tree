@@ -14,6 +14,7 @@
     <toc-element topic="Autentikacio-es-Autorizacio.md"/>
     <toc-element topic="Features.md">
         <toc-element topic="Feature-IAM.md">
+            <toc-element topic="Létrehozott-Felhasználó-Első-Bejelentkezése.md"/>
             <toc-element topic="LoginUser-Feature.md"/>
             <toc-element topic="RegisterUser-Feature.md"/>
             <toc-element topic="ResetPassword-Feature.md"/>

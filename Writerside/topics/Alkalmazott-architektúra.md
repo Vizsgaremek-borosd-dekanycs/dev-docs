@@ -1,15 +1,13 @@
 # Szoftver architektúra
 
-A **Vertical Slice Architecture** célja, hogy a rendszert funkcionális szeletekre bontsa, amelyek mindegyike önálló egységet képez. Ez az architektúra segíti a kód olvashatóságát, könnyebb tesztelhetőségét, valamint támogatja a gyorsabb és rugalmasabb fejlesztést.
-
-
+A **Vertical Slice Architecture** célja, hogy a rendszert funkcionális szeletekre bontsa, amelyek mindegyike önálló egységet képez. Ez az architektúra elősegíti a kód olvashatóságát, könnyebb tesztelhetőségét, valamint támogatja a gyorsabb és rugalmasabb fejlesztést.
 
 ---
 
 ## Architektúra Áttekintése
 A Vertical Slice Architecture egyedi modulokra bontja az alkalmazást, amelyek mindegyike a következő elemeket tartalmazza:
 - Egy adott funkcióhoz tartozó összes logikát.
-- A a domain logika, az adatkezelés és a kommunikáció, stb... különálló rétegeit.
+- A domain logika, az adatkezelés és a kommunikáció különálló rétegeit.
 - Csak az adott slice-hoz szükséges fájlokat.
   [![vsa1](https://github.com/user-attachments/assets/ed55aaec-c38d-4132-9d78-f17a49ba5bd7)](https://docs.google.com/drawings/d/1-sh4FfvHa7q6Js81EJXVfmPeI5VJw8O5jMYs67iQJIU/edit?usp=sharing)
 
@@ -39,11 +37,11 @@ Egy funkcionális szelet (slice) jellemzően a következő elemeket tartalmazza:
 [TODO: PÉLDA]
 ```
 ### Common
-A **Common** réteg olyan általános, újrahasználható elemeket tartalmaz, amelyek nem kötődnek szorosan az üzleti logikához, de hasznosak az egész alkalmazásban. Ezek a dolgok általában **technikai infrastruktúrával**, **segédosztályokkal**, vagy **alacsony szintű általános logikával** kapcsolatosak.
+A **Common** réteg olyan általános, újrahasználható elemeket tartalmaz, amelyek nem kötődnek szorosan az üzleti logikához, de hasznosak az egész alkalmazásban. Ezek az elemek általában **technikai infrastruktúrával**, **segédosztályokkal**, vagy **alacsony szintű általános logikával** kapcsolatosak.
 
-#### Mit írj a Common-ba:
+#### Mit érdemes a Common-ba helyezni:
 - **Helper osztályok és funkciók:**
-    - Pl. dátumformázók, string manipulációk, fájlkezelés, stb.
+    - Például dátumformázók, string manipulációk, fájlkezelés, stb.
     - Példa:
       ```php
       class StringHelper {
@@ -54,7 +52,7 @@ A **Common** réteg olyan általános, újrahasználható elemeket tartalmaz, am
       ```
 
 - **Infrastruktúra elemek:**
-    - Pl. HTTP kliens, adatbázis csatlakozók, külső API kliensek.
+    - Például HTTP kliens, adatbázis csatlakozók, külső API kliensek.
     - Ez lehet egy általános "RequestHandler" vagy "HttpClient".
 
 - **Közös validációk vagy szabályok:**
@@ -65,17 +63,17 @@ A **Common** réteg olyan általános, újrahasználható elemeket tartalmaz, am
     - Olyan komponensek, amelyek a rendszer alapműködéséhez szükségesek.
 
 - **Közös interfészek:**
-    - Pl. `RepositoryInterface`, `EventInterface`, stb.
+    - Például `RepositoryInterface`, `EventInterface`, stb.
     - Ezek segítenek az architektúra alapját lefektetni.
 
 ### Domain
-A **Domain** réteg kizárólag az üzleti logikával és az üzleti szabályokkal foglalkozik. Ez a rendszered "magja", ahol az alkalmazásod valódi értéke megjelenik. Ez **független kell legyen a framework-től** vagy bármilyen külső technológiától.
+A **Domain** réteg kizárólag az üzleti logikával és az üzleti szabályokkal foglalkozik. Ez a rendszer "magja", ahol az alkalmazás valódi értéke megjelenik. Ez **független kell legyen a framework-től** vagy bármilyen külső technológiától.
 
-#### Mit írj a Domain-be:
+#### Mit érdemes a Domain-be helyezni:
 - **Entitások:**
     - Az üzleti logikát reprezentáló objektumok.
     - Példa: `User`, `Order`, `Product`.
-    - Az entitások gyakran tartalmaznak üzleti szabályokat is (pl. a felhasználó e-mail címének ellenőrzése a példában).
+    - Az entitások gyakran tartalmaznak üzleti szabályokat is (például a felhasználó e-mail címének ellenőrzése a példában).
       ```php
       class User {
           private string $email;
@@ -134,16 +132,16 @@ A **Domain** réteg kizárólag az üzleti logikával és az üzleti szabályokk
       ```
 
 - **Domain Események:**
-    - Az eseményalapú architektúra részei, pl. `UserRegistered`, `OrderPlaced`.
+    - Az eseményalapú architektúra részei, például `UserRegistered`, `OrderPlaced`.
     - Ezek segítenek más komponensek értesítésében.
 
 #### Common VS Domain
 | **Kérdés**                                | **Common**                                 | **Domain**                                |
 |------------------------------------------|-------------------------------------------|------------------------------------------|
-| Általános technikai funkció?             | Igen (pl. fájlkezelés, API-hívások)        | Nem                                      |
+| Általános technikai funkció?             | Igen (például fájlkezelés, API-hívások)        | Nem                                      |
 | Üzleti logikához kötött?                 | Nem                                       | Igen                                     |
 | Minden modul használhatja?               | Igen                                      | Csak az adott domain-hez kapcsolódik     |
-| Alacsony szintű technikai eszköz?        | Igen (pl. logger)                         | Nem                                      |
+| Alacsony szintű technikai eszköz?        | Igen (például logger)                         | Nem                                      |
 | Értékes az üzleti szabályok szempontjából?| Nem                                       | Igen                                     |
 
 ---
@@ -164,7 +162,7 @@ A Command Bus segít elkülöníteni a controller (amely a HTTP kéréseket keze
 
 - A controller csak egy Command-ot hoz létre, amely tartalmazza a szükséges adatokat.
 - A Command Bus továbbítja ezt egy megfelelő Handler-hez, amely elvégzi az üzleti logikát. Így a controller nem lesz túlterhelt és könnyebben tesztelhető.
-- A Command Bus kepes úgynevezett "Middleware"-ek használatára (pl. naplózáshoz, validáláshoz, tranzakciókezeléshez), így egységes módon kezelhetőek ezek a funkciók az alkalmazásban.
+- A Command Bus képes úgynevezett "Middleware"-ek használatára (például naplózáshoz, validáláshoz, tranzakciókezeléshez), így egységes módon kezelhetőek ezek a funkciók az alkalmazásban.
 - Ha a rendszer bonyolultabbá válik, új parancsokat és handler-eket lehet hozzáadni anélkül, hogy meglévő kódot kellene módosítani.
 - Mivel a logika a Command Handler-ekben van, könnyen tesztelhetőek izoláltan. A controller tesztelésekor nem kell a komplex üzleti logikával foglalkozni.
 

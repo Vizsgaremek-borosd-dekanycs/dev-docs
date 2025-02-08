@@ -12,4 +12,16 @@
         </description>
         <accepts>Empty-MD-Topic.html</accepts>
     </rule>
+    <rule id="3173829d">
+        <description>Created after removal of "Dokumentum célközönsége" from Fejlesztői Dokumentáció - Állatorvosi
+            nyilvántartó rendszer
+        </description>
+        <accepts>Dokumentum-célközönsége.html</accepts>
+    </rule>
+    <rule id="7e494a95">
+        <description>Created after removal of "Szoftverkövetelmények" from Fejlesztői Dokumentáció - Állatorvosi
+            nyilvántartó rendszer
+        </description>
+        <accepts>Szoftverkövetelmények.html</accepts>
+    </rule>
 </rules>

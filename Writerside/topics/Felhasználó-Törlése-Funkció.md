@@ -24,7 +24,6 @@ A `DeleteUserFeature` az alábbi lépésekben működik:
     - **Végpont**: `POST /api/v1/iam/user/batch-delete`
     - **Küldött adatok**: `{ "Ids": [1, 2, 3] }`
     - **Leírás**: A kliens egy POST kérést küld a megadott végpontra, amely tartalmazza a törlendő felhasználók azonosítóit.
-    - **Miért POST?**: A POST metódus lehetőséget biztosít a kérés törzsében történő adatok küldésére, ami szükséges a felhasználói azonosítók listájának továbbításához. Emellett a POST a szerver állapotát módosító műveleteknél javasolt.
 
 3. **Validáció**:
     - **Validátor**: `DeleteUserApiCommandValidator`

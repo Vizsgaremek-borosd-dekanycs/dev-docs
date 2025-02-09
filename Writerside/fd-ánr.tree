@@ -8,16 +8,26 @@
 
     <toc-element topic="starter.md"/>
     <toc-element topic="Alkalmazott-architektúra.md"/>
+    <toc-element topic="HIba-kezelés-az-alkalmazásban.md"/>
     <toc-element topic="API-Kommunikációra-vonatkozó-megkötések.md"/>
     <toc-element topic="Kérések-feldolgozása-a-kliensoldalon.md"/>
     <toc-element topic="Szerveroldali-kérések-feldolgozása.md"/>
     <toc-element topic="Autentikacio-es-Autorizacio.md"/>
     <toc-element topic="Features.md">
         <toc-element topic="Feature-IAM.md">
+            <toc-element topic="Létrehozott-Felhasználó-Első-Bejelentkezése.md"/>
             <toc-element topic="LoginUser-Feature.md"/>
             <toc-element topic="RegisterUser-Feature.md"/>
             <toc-element topic="ResetPassword-Feature.md"/>
+            <toc-element topic="Felhasználó-Létrehozás.md"/>
+          <toc-element topic="Más-Felhasználó-Adatainak-Módosítása.md"/>
+          <toc-element topic="Felhasználó-Törlése-Funkció.md"/>
         </toc-element>
+    </toc-element>
+    <toc-element topic="Frontend.md">
+        <toc-element topic="EditUserDialog-Komponens.md"/>
+        <toc-element topic="MyListboxComponent-Dokumentáció.md"/>
+        <toc-element topic="PermissionWrapper-Komponens.md"/>
     </toc-element>
 
 </instance-profile>

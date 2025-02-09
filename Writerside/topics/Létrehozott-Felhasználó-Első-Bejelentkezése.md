@@ -9,7 +9,6 @@ Az `ElsőBejelentkezés` funkció célja, hogy megkönnyítse az új felhasznál
 
 1. **Értesítések:**
     - A felhasználó részére e-mail értesítés kerül kiküldésre, amely tartalmazza a megadott e-mail címet és egy hivatkozást a bejelentkezési felülethez.
-    - **Szolgáltatás**: `INotificationService`
     - **Leírás**: A rendszer üdvözlő e-mailt küld a felhasználónak a profilja sikeres létrehozásáról, mely tartalmaz egy hivatkozást, amely átirányítja őt a FirstTimeSignIn.razor oldalra, ahol a befejező lépések elvégzésére kerül sor.
 
 2. **Felhasználó Elindítja a Bejelentkezést:**

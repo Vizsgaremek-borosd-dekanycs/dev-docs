@@ -11,6 +11,25 @@
 | **Osztály**      | 13T-II                                        |                                                                   |
 | **Csoporttagok** | Dékány Csaba                                  | Boros Dániel                                                      |
 
+## Projekt szükségességének indoklása
+
+**Az állatorvosi nyilvántartó rendszer létrehozásának indoklása és egyedísége**
+
+Az állatorvosi nyilvántartó rendszer elkészítésének egyik fő indoka az volt, hogy a meglévő rendszerek gyakran elavultak, nehezen kezelhetők, vagy nem teljeskörűen elégítik ki az állatorvosok és pácienseik igényeit. A digitalizáció terjedésével egyre nagyobb igény mutatkozott egy olyan rendszerre, amely gyors, biztonságos és könnyen elérhető bármilyen eszközről.
+
+**A rendszer főbb előnyei és egyedísége:**
+
+1. **Felhasználóbarát kezelőfelület** – Intuitív és letisztult design, amely lehetővé teszi a gyors navigálást, minimalizálva a betanulási időt.
+
+2. **Rugalmas páciensnyilvántartás** – Az állatorvosok egyedi igényeihez igazodó, testreszabható adatbázis, amely lehetővé teszi a részletes betegkartonok vezetését, a kezelések és vizsgálatok pontos dokumentálását.
+
+3. **Felhasználási rugalmasság** – A rendszer asztali gépről, tabletről és mobiltelefonról is elérhető, ezáltal az állatorvosok a rendelőn kívül is hatékonyan tudnak dolgozni.
+
+4. **Papírmentes dokumentáció** – Minden kapcsolódó dokumentumok digitális formában történő kezelése csökkenti a papírfelhasználást, gyorsabb visszakereshetőséget biztosít, és csökkenti az elveszett dokumentumok kockázatát.
+
+5. **Testreszabható funkcionalitás** – A rendszer lehetőséget biztosít egyéni beállításokra, így az állatorvosok saját igényeik szerint alakíthatják ki a használati módot.
+
+
 ## Felhasznált függőségek
 
 | Függőség | Használat oka |
